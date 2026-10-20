@@ -26,3 +26,28 @@ after `BIOS flash finished`. Remember to "Load optimal defaults" in BIOS setup a
 - Uses mtools to modify a copy of `FD14LITE.img`:
   replaces `FDCONFIG.SYS` and `FDAUTO.BAT` with minimal versions that skip the
   installer and run `flash.bat` (similar to a HP-created stick), and adds the modded ROM as `N40LMOD.ROM`.
+
+## What it looks like
+
+Dmesg output from FreeBSD on a non-modded BIOS:
+
+```
+ada4 at ata0 bus 0 scbus4 target 1 lun 0
+ada4: <Samsung SSD 840 EVO 250GB EXT0BB6Q> ACS-2 ATA SATA 3.x device
+ada4: Serial Number S1DBNSAF603227K
+ada4: 150.000MB/s transfers (SATA, UDMA6, PIO 512bytes)
+ada4: 238475MB (488397168 512 byte sectors)
+ada4: quirks=0x3<4K,NCQ_TRIM_BROKEN>
+```
+
+After flashing the mod and setting **SATA IDE Combined Mode** = `Disabled` in the BIOS setup, the dmesg output instead looks like this:
+
+```
+ada4 at ahcich5 bus 0 scbus5 target 0 lun 0
+ada4: <Samsung SSD 840 EVO 250GB EXT0BB6Q> ACS-2 ATA SATA 3.x device
+ada4: Serial Number S1DBNSAF603227K
+ada4: 300.000MB/s transfers (SATA 2.x, UDMA6, PIO 512bytes)
+ada4: Command Queueing enabled
+ada4: 238475MB (488397168 512 byte sectors)
+ada4: quirks=0x3<4K,NCQ_TRIM_BROKEN>
+```
