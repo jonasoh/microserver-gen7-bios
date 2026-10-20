@@ -29,6 +29,8 @@ after `BIOS flash finished`. Remember to "Load optimal defaults" in BIOS setup a
 
 ## What it looks like
 
+<img width="1600" height="1180" alt="Microservers Gen7 and Gen8 in their natural environment" src="https://github.com/user-attachments/assets/1844936d-b1ec-4cce-b355-407ba0b0ab87" />
+
 Dmesg output from FreeBSD on a non-modded BIOS:
 
 ```
